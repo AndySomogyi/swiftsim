@@ -387,7 +387,10 @@ struct cell {
     struct task *stars_resort;
 
     /*! Max smoothing length in this cell. */
-    double h_max;
+    float h_max;
+
+    /*! Max smoothing length of active particles in this cell. */
+    float h_max_active;
 
     /*! Last (integer) time the cell's part were drifted forward in time. */
     integertime_t ti_old_part;
