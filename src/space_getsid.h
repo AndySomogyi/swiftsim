@@ -43,10 +43,9 @@
  *
  * @return The shift ID and set shift, may or may not swap ci and cj.
  */
-__attribute__((always_inline)) INLINE static int space_getsid(struct space *s,
-                                                              struct cell **ci,
-                                                              struct cell **cj,
-                                                              double *shift) {
+__attribute__((always_inline)) INLINE static int space_getsid(
+    const struct space *s, struct cell **ci, struct cell **cj,
+    double shift[3]) {
 
   /* Get the relative distance between the pairs, wrapping. */
   const int periodic = s->periodic;
