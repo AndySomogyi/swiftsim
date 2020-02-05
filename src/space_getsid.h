@@ -39,7 +39,7 @@
  * @param s The space
  * @param ci Pointer to first #cell.
  * @param cj Pointer second #cell.
- * @param shift Vector from ci to cj.
+ * @param shift (return) Vector from ci to cj.
  *
  * @return The shift ID and set shift, may or may not swap ci and cj.
  */
