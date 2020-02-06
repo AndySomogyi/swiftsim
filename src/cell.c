@@ -3447,11 +3447,18 @@ int cell_unskip_hydro_tasks(struct cell *c, struct scheduler *s) {
       /* Store current values of dx_max and h_max. */
       else if (t->type == task_type_sub_self) {
         cell_activate_subcell_hydro_tasks(ci, NULL, s, with_timestep_limiter);
+
+	/* Activate the drifts if the cells are local. */
+	if (ci->nodeID == engine_rank) cell_activate_drift_part(ci, s);
       }
 
       /* Store current values of dx_max and h_max. */
       else if (t->type == task_type_sub_pair) {
         cell_activate_subcell_hydro_tasks(ci, cj, s, with_timestep_limiter);
+
+	/* Activate the drifts if the cells are local. */
+	if (ci->nodeID == engine_rank) cell_activate_drift_part(ci, s);
+	if (cj->nodeID == engine_rank) cell_activate_drift_part(cj, s);
       }
     }
 
